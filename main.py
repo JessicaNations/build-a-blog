@@ -26,13 +26,13 @@ def redirector():
 
 @app.route("/blog", methods=["POST", "GET"])
 def index():
-    #the form should direct to /add-post instead, it would make error handling a lot cleaner         
+    #the form should direct to /newpost instead, it would make error handling a lot cleaner         
     if request.method == "POST":
         new_title = request.form["title"]
         new_content = request.form["content"]
 
         if not new_title or not new_content:
-            return render_template("add-post.html",title=new_title, content=new_content, error_message="DON'T BE SO STUPID")
+            return render_template("newpost.html",title=new_title, content=new_content, error_message="DON'T BE SO STUPID")
 
         new_post = BlogPost(new_title, new_content)
         db.session.add(new_post)
@@ -49,9 +49,9 @@ def index():
 
     return render_template("blog.html", posts=posts, view_post=view_post)
 
-@app.route("/add-post", methods=["GET"])
+@app.route("/newpost", methods=["GET"])
 def add_post():
-    return render_template("add-post.html")
+    return render_template("newpost.html")
 
 #only run when supposed to
 if __name__ == "__main__":
