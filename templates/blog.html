@@ -17,7 +17,7 @@
 <ul style="list-style: none;">
     {% for post in posts %}
     <li>
-        <h2><a href=/blog?post_id={{post.id}}>{{post.title}}</a></h1>
+        <h2><a href=/blog?id={{post.id}}>{{post.title}}</a></h1>
         <p>{{post.content}}<hr></p>
     </li>
     {% endfor %}
